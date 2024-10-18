@@ -13,6 +13,7 @@ import reportWebVitals from './reportWebVitals';
 
 import TempoReal from './components/TempoReal';
 import Alertas from './components/Alertas';
+import UserConfigs from './components/UserConfigs';
 import Historico from './components/Historico';
 
 
@@ -22,6 +23,7 @@ ReactDOM.render(
     <Routes>
       <Route path="/" element={<App />}></Route>
       <Route path="/tempo-real" element={<TempoReal />}></Route>
+      <Route path="/user-configs" element={<UserConfigs />}></Route>
       <Route path="/alertas" element={<Alertas />}></Route>
       <Route path="/historico" element={<Historico />}></Route>
     </Routes>

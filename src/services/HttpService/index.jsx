@@ -61,6 +61,19 @@ export default class HttpService{
     return response;
   }
 
+
+  static listarConfigs = async () => {
+    let url = urlBase + '/userconfig';
+    let response = await axios.get(url,defaultConfig);
+    return response;
+  }
+
+  static salvarConfig = async (payload) => {
+    let url = urlBase + '/userconfig';
+    let response = await axios.put(url,payload,defaultConfig);
+    return response;
+  }
+
   static listarAlertas = async (filtros) => {
 
     let url = urlBase + '/alerta';
