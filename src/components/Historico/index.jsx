@@ -413,8 +413,8 @@ export default class Historico extends Component{
                 <thead>
                   <tr>
                     <th>#</th>
-                    <th>nível</th>
-                    <th>momento da medição</th>
+                    <th>Nível (cm)</th>
+                    <th>Momento da Medição</th>
                   </tr>
                 </thead>
 
@@ -425,8 +425,8 @@ export default class Historico extends Component{
                         
                       <tr key={dado.idMedicao}>
                         <td>{dado.idMedicao}</td>
-                        <td>{dado.dtMedicao}</td>
                         <td>{dado.vlDistancia}</td>
+                        <td>{dado.dtMedicao}</td>
                         </tr>
                     )
                     })

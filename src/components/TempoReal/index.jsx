@@ -15,7 +15,7 @@ import ReactApexChart from 'react-apexcharts'
 import ApexCharts from "apexcharts";
 
 
-const TEMPO_REFRESH = 7000;
+const TEMPO_REFRESH = 4000;
 const LIMITE_TABELA = 20;
 
 const Y_MIN_PADRAO = 24;
@@ -278,8 +278,8 @@ export default class TempoReal extends Component{
                 <thead>
                   <tr>
                       <th>#</th>
-                      <th>nível</th>
-                      <th>momento da medição</th>
+                      <th>Nível (cm)</th>
+                      <th>Momento da Medição</th>
                   </tr>
                 </thead>
 
