@@ -1,6 +1,6 @@
 # TCC- Medidor d'água (Frontend)
 
-O projeto em execução pode ser acessado no endereço http://??????/
+O projeto em execução pode ser acessado no endereço http://??????/ (configurar dependendo do ambiente)
 
 Este projeto foi criado utilizando o React [Create React App](https://github.com/facebook/create-react-app).
 
