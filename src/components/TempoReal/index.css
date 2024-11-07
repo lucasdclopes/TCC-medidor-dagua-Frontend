@@ -1,26 +1,5 @@
-.containerCadastroAlunos {
+.containerTempoReal {
   padding-top: 60px;
-}
-
-.btnSalvarAluno {
-  background-color:rgb(2, 114, 11);
-  margin-left: 20px;
-}
-
-.btnDeletarAluno {
-  margin-left: 20px;
-}
-
-.btnCancelar {
-  margin-left: 20px;
-}
-
-.btnAddTurma {
-  margin-left: 20px;
-}
-
-.inputNovoAluno {
-  margin-bottom: 20px;
 }
 
 .form-inline {

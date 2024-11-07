@@ -4,7 +4,6 @@ import './index.css';
 import HttpService from '../../services/HttpService';
 import HttpServiceHandler from '../../services/HttpServiceHandler';
 import DateHelper from "../../helpers/DateHelper";
-import RgbHelper from "../../helpers/RgbHelper";
 import ErroModal from '../ErroModal';
 import Button from 'react-bootstrap/Button';
 import MenuLogado from '../MenuLogado';
@@ -18,11 +17,12 @@ import ApexCharts from "apexcharts";
 const TEMPO_REFRESH = 4000;
 const LIMITE_TABELA = 20;
 
-const Y_MIN_PADRAO = 24;
-const Y_MAX_PADRAO = 40;
+const Y_MIN_PADRAO = 10;
+const Y_MAX_PADRAO = 20;
 
 var loop;
 
+//Calcula o valor mínimo do eixo Y
 function calcularMinY(min) {
   console.log('min ' + min);
 
@@ -33,6 +33,7 @@ function calcularMinY(min) {
   return minNovo;
 }
 
+//Calcula o valor máximo do eixo Y
 function calcularMaxY(max) {
   console.log('max ' + max);
 
@@ -51,7 +52,8 @@ export default class TempoReal extends Component{
 
    
     this.state = {
-      bla: true,
+
+      //Configuraçòes do gráfico abaixo
       series: [
         {
           type: 'line',
@@ -127,7 +129,7 @@ export default class TempoReal extends Component{
         }
         }
       },
-
+      //fim das configurações do gráfico
       dadosTabela: [],
       filtros : {
         paginacaoRequest : {
@@ -173,7 +175,7 @@ export default class TempoReal extends Component{
           },
         }
       }
-
+      //obtém os dados do servidor
       HttpService.listarMedicoes(filtros)
       .then((response) => {
         if (!response){
@@ -184,14 +186,12 @@ export default class TempoReal extends Component{
         }
         let responseData = response.data;
 
-        //evitar IDs repetidos (o gráfico atualizou mais rápido que o servidor recebeu dados)
+        //evitar IDs repetidos (o gráfico atualizou mais rápido que o servidor recebeu novos dados do módulo ESP)
         if (this.state.dadosTabela){
           //console.log('organizando dados recebidos');
           responseData = responseData.filter((resp) => !(this.state.dadosTabela.map(el => el.idMedicao).includes(resp.idMedicao)));
         }
-        /*if (this.state.dadosTabela.filter((tabela) => tabela.idMedicao == responseData[0].idMedicao).length > 0) {
-          return;
-        }*/
+
         let responseDataTabela = responseData.slice();
         if (responseData.length > 1) //a ordem do servidor é diferente da necessária pro gráfico
           responseData.reverse();
@@ -203,8 +203,12 @@ export default class TempoReal extends Component{
         if (dadosTabela.length > LIMITE_TABELA){
           dadosTabela.pop(); 
         }
+        //De tempo em tempo é necessário limpar o gráfico
+        //Se limpar com muita frequência, o gráfico fica redesenhando constantemente. 
+        //Se demorar para limpar, ocupa muita memória.
         if (seriesDist.length > 1000) {
           console.log('limpando');
+          //mantém somente os últimos 20 registros
             series = [{ 
               data: seriesDist.slice(seriesDist.length - 20, seriesDist.length)
             }]       
@@ -215,13 +219,17 @@ export default class TempoReal extends Component{
             x : DateHelper.stringIsoParaJs(responseData[i].dtMedicao),
             y : response.data[i].vlDistancia
           }
-          seriesDist.push(dataItemDist);
+          seriesDist.push(dataItemDist); 
+          //coloca os novos dados de medição no fim do array,
+          //array este que está atrelado ao gráfico
         }
 
+        //atualiza o gráfico
         ApexCharts.exec('realtime', 'updateSeries', [{   
           data: seriesDist  
         }]);
 
+        //atualiza os dados no state
         this.setState(prevState => ({
           ...prevState,
           series : series,
@@ -242,14 +250,11 @@ export default class TempoReal extends Component{
 
   }
 
-
-  
-
   render(){
     return (
       <div>
 
-        <Container className="containerTempoReawl" fluid>
+        <Container className="containerTempoReal" fluid>
 
           <Row>
             <Col xs={{span: 12, offset: 0}} sm={{span : 12, offset: 0}}  md={{span : 10, offset: 1}} lg={{span: 10, offset: 1}}>
@@ -259,7 +264,7 @@ export default class TempoReal extends Component{
 
           <Row>
             <Col xs={{span: 6, offset: 0}} sm={{span : 6, offset: 0}}  md={{span : 12, offset: 0}} lg={{span: 10, offset: 1}}>
-              <h3 className="Aluno">Dados</h3>
+              <h3 className="Dados">Dados</h3>
             </Col>
           </Row>
           
