@@ -1,19 +1,19 @@
-# PI-sensores (Frontend)
+# TCC- Medidor d'água (Frontend)
 
-O projeto em execução pode ser acessado no endereço http://35.80.96.120/
+O projeto em execução pode ser acessado no endereço http://??????/ (configurar dependendo do ambiente)
 
 Este projeto foi criado utilizando o React [Create React App](https://github.com/facebook/create-react-app).
 
 ## Sobre
 
-Este projeto é do PI-5 (Projeto Integrador) do curso de Engenheria de Computação da Univesp. O projeto consiste em um sistema de monitoramento de temperatura e umidade.
+Este projeto é do TCC do curso de Engenheria de Computação da Univesp. O projeto consiste em um sistema de monitoramento de caixa d'água e acionamento de uma bomba d'água.
 
-Neste front-end temos um gráfico de monitoramento em tempo real utilizando a lib apexcharts. Também há um gráfico para apresentar dados de histórico, feito com o ChartJs. Finalmente, uma tela para configurar e-mails de alerta caso o sensor de temperatura e umidade atinja certos parâmetros.
+Neste front-end temos um gráfico de monitoramento em tempo real utilizando a lib apexcharts. Também há um gráfico para apresentar dados de histórico, feito com o ChartJs. Finalmente, uma tela para configurar e-mails de alerta caso o sensor de nível atinja certos parâmetros.
 
 ## Requisitos
 
 Para executar este projeto você precisa também estar executando o backend deste sistema, que está localizado em 
-https://github.com/lucasdclopes/PI-sensores
+[https://github.com/lucasdclopes/PI-sensores](https://github.com/lucasdclopes/TCC-medidor-dagua)
 
 Também é necessário instalar o node.js + npm. Os testes foram feitos na versão LTS 18.16.0, que inclui o npm 9.51
 https://nodejs.org/en/download
