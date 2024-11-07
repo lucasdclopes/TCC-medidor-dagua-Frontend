@@ -295,7 +295,6 @@ export default class configs extends Component{
                         <td>{index}</td>
                         <td>{this.state.configs[index]}</td>
                         <td style={{textAlign : "center"}}>
-                            {/* <Button onClick={() => {this.visualizarAula(aula.idAula)}}>Visualizar Aula</Button> */}
                             <Button onClick={() => {this.exibirDadosConfig(index)}}>Editar</Button>
                         </td>
                         </tr>
