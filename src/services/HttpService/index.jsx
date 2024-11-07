@@ -1,5 +1,4 @@
 import axios from 'axios';
-import UsuarioLogadoDto from '../../dto/UsuarioLogadoDto';
 
 const host = window.location.protocol + "//" + window.location.host;
 const urlBase = 'http://192.168.15.53:8080/tcc-medidor-dagua/api'; //<- testes local
@@ -18,11 +17,13 @@ const defaultConfig = {
 
 export default class HttpService{
 
+  //configura as informações de paginações
   static queryPaginacao = (paginacao) => {
     return (!paginacao.size || !paginacao.page) ? 
       '' : 
       'size=' + paginacao.size + '&page=' + (paginacao.page); 
   } 
+  //configura todos os parâmetros no formato query string
   static gerarParams = (arrParams) => {
     return (arrParams.length > 0) ? 
       '?'+arrParams.join('&'):'';
@@ -51,11 +52,8 @@ export default class HttpService{
     if (filtros.tipoAgrupamento && filtros.tipoAgrupamento > 0) {
       queryParams.push('tipoAgrupamento=' + filtros.tipoAgrupamento);
     }
-    
 
     url += HttpService.gerarParams(queryParams);
-
-    //console.log("url -> ",url);
 
     let response = await axios.get(url,defaultConfig);
     return response;
@@ -114,17 +112,12 @@ export default class HttpService{
     } else {
       return axios.post(url,postData,config);
     }
-      
   }
 
   static deletarAlerta = async (idAlerta) => {
     let url = urlBase + '/alerta/' +idAlerta;
     let response = await axios.delete(url,defaultConfig);
     return response;
-  }
-
-  static logar = (postData) => {
-    return axios.post(urlBase + '/logar', postData,defaultHeaders);
   }
 
 }
