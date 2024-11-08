@@ -24,7 +24,7 @@ var loop;
 
 //Calcula o valor mínimo do eixo Y
 function calcularMinY(min) {
-  console.log('min ' + min);
+  //console.log('min ' + min);
 
   let minNovo = Y_MIN_PADRAO;
   while (min - 5 < minNovo){
@@ -35,7 +35,7 @@ function calcularMinY(min) {
 
 //Calcula o valor máximo do eixo Y
 function calcularMaxY(max) {
-  console.log('max ' + max);
+  //console.log('max ' + max);
 
   let maxNovo = Y_MAX_PADRAO;
   while (max + 5 > maxNovo){
@@ -214,15 +214,18 @@ export default class TempoReal extends Component{
             }]       
         } 
 
+       //console.log('=======antes for',response.data);
         for (let i = 0; i < responseData.length; i++) {
           let dataItemDist = {
             x : DateHelper.stringIsoParaJs(responseData[i].dtMedicao),
             y : response.data[i].vlDistancia
           }
+          //console.log('dataItemDist_' + response.data[i].idMedicao,dataItemDist);
           seriesDist.push(dataItemDist); 
           //coloca os novos dados de medição no fim do array,
           //array este que está atrelado ao gráfico
         }
+        //console.log('======depois for');
 
         //atualiza o gráfico
         ApexCharts.exec('realtime', 'updateSeries', [{   
