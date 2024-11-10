@@ -1,9 +1,9 @@
 import axios from 'axios';
 
 const host = window.location.protocol + "//" + window.location.host;
-const urlBase = 'http://192.168.15.53:8080/tcc-medidor-dagua/api'; //<- testes local
+//const urlBase = 'http://192.168.15.53:8080/tcc-medidor-dagua/api'; //<- testes local
 //const urlBase = 'http://localhost:8080/api'; //<- testes local
-//const urlBase = host + '/api'; //<- build acesso na rede
+const urlBase = host + ':8080/tcc-medidor-dagua/api'; //<- build acesso na rede
 const defaultHeaders = {
   headers : {
     "Content-Type": "application/json",
