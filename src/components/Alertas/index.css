@@ -12,6 +12,10 @@
   display: flex;
 }
 
+.btnCancelar {
+  margin-left: 20px;
+}
+
 .btnSalvarAlerta {
   background-color:rgb(2, 114, 11);
   margin-left: 20px;

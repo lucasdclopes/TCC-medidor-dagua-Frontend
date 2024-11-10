@@ -271,7 +271,7 @@ export default class configs extends Component{
           <Row className="mb-3">
             <Col xs={{span: 12, offset: 0}} sm={{span : 12, offset: 0}}  md={{span : 12, offset: 0}} lg={{span: 10, offset: 1}}>
               <Button variant="success" className="btnSalvarConfig" onClick={this.salvarConfig} disabled={!(this.state.isEdicao || this.state.isNovo )}>Salvar</Button>
-              <Button variant="secondary" className="btnCancelar" onClick={this.cancelar} disabled={!(this.state.isEdicao || this.state.isNovo )}>Cancelar</Button>        
+              <Button variant="secondary" className="btnCancelarConfig" onClick={this.cancelar} disabled={!(this.state.isEdicao || this.state.isNovo )}>Cancelar</Button>        
             </Col>
           </Row>
 
